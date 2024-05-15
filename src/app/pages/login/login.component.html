@@ -1,0 +1,38 @@
+<main id="login" class="main-bg-img w-screen h-screen">
+    <header id="login-header" class="z-10 flex justify-center items-center">
+      <nav class="flex justify-between items-center md:w-[1200px] container">
+        <div class="img">
+          <a href="/">
+            <img class="w-44" src="assets/logo.png" alt="">
+          </a>
+        </div>
+        <div class="flex justify-between items-center gap-4 sign-in-container">
+          <div
+            class="flex justify-center items-center gap-2 border-[1px] bg-transparent px-2 py-2 rounded-l text-netflixWhite lang-container">
+            <i class="text-sm material-icons">translate</i>
+            <select class="bg-transparent border-none cursor-pointer outline-none" name="language" id="language">
+              <option value="en" class="text-netflixBlack">English </option>
+              <option value="es" class="text-netflixBlack">Español </option>
+              <option value="fr" class="text-netflixBlack">Français </option>
+            </select>
+          </div>
+          <div class="btn-container">
+            <button
+              class="bg-netflixRed hover:bg-red-700 px-4 py-2 rounded-lg font-semibold text-netflixWhite transition-all duration-200 ease-in">Sign
+              In</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <section id="login-banner" class="flex justify-center items-center w-screen h-[85vh] hero">
+      <div class="flex flex-col justify-center items-center gap-6 px-5 md:px-0 w-full text-netflixWhite">
+        <h1 class="font-extrabold font-sans text-3xl text-center lg:text-5xl">Unlimited movies, TV shows and more
+        </h1>
+        <p class="text-center text-xl lg:text-3xl">Watch anywhere. Cancel anytime.</p>
+        <p class="text-center text-lg lg:text-xl">Ready to watch? Enter your email or mobile number to create or restart your membership.</p>
+        <div class="input-btn-container">
+          <button class="bg-netflixRed hover:bg-red-700 px-6 py-2 rounded-md font-semibold text-2xl transition-all duration-100 ease-in" routerLink="/home">Get Started ></button>
+        </div>
+      </div>
+    </section>
+  </main>

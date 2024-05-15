@@ -1,0 +1,154 @@
+<section id="banner" class="relative flex justify-center items-end pb-10 w-full h-full overflow-hidden">
+    <div class="top-0 -z-50 fixed bg-netflixbackground2 w-screen h-screen overflow-x-hidden background-layer"></div> 
+
+     <!-- for bg  banner -->
+    <img *ngIf="movieData" class="top-0 left-0 -z-40 absolute w-full h-full object-cover" [src]="movieData.backdrop_path | originalIMG" alt="">
+
+        <img *ngIf="animeData" class="top-0 left-0 -z-40 absolute w-full h-full object-cover" [src]="animeData.backdrop_path | originalIMG"  alt="">
+        <img *ngIf="tvShowData" class="top-0 left-0 -z-40 absolute w-full h-full object-cover" [src]="tvShowData.backdrop_path | originalIMG"  alt="">
+
+    <div class="flex justify-start items-center 2xl:w-[1200px] container">
+        <div class="flex flex-col justify-end items-start gap-10 text-netflixWhite">
+
+      <app-video [showVideo]="showVideo" (closeVideoEvent)="closeVideo()"></app-video>
+            <!-- for movie details -->
+             <div *ngIf="movieData" class="relative flex sm:flex-row flex-col sm:justify-start sm:items-start gap-6 px-4 sm:px-0 info-container">
+                <div class="flex sm:flex-col justify-between items-end sm:items-center gap-4 w-1/2 sm:w-[35%] img-container">
+                    <div class="poster-img-container">
+                        <img  class="w-40" [src]="movieData.poster_path | img" alt="">
+                    </div>
+                    <div class="w-full play-btn-container">
+                        <button (click)="toggleVideo()"
+                        class="flex justify-between items-center gap-2 border-[1px] hover:border-netflixRed bg-transparent shadow-sm px-4 py-2 rounded-md w-full text-netflixGray-300 hover:text-netflixWhite">
+                        <a class="text-md">Play</a>
+                        <i class="text-md material-icons"> play_arrow</i>
+                    </button>
+                    </div>
+                </div>
+                <div class="flex flex-col justify-start items-start gap-4 detail-container">
+                    <div class="flex flex-col justify-start items-start gap-1 title-container">
+                        <h1 class="font-bold text-lg text-netflixRed sm:text-2xl capitalize">{{movieData.title}}</h1>
+                        <span class="text-netflixGray-400 text-sm capitalize">{{movieData. original_title}}</span>
+                        <p class="text-netflixGray-300 text-sm capitalize">{{movieData.overview}}</p>
+                    </div>
+                    <div class="flex flex-col justify-start items-start text-netflixGray-400 text-sm other-info-container">
+                        <p><strong> Aired :  </strong>  {{movieData.release_date}}</p>
+                        <p><strong>Status :</strong> {{movieData.status}}</p>
+                        <div class="flex flex-wrap justify-start items-center gap-1">
+                            <strong>Genre :</strong>
+                            <span class="rounded-md text-netflixGray-400 hover:text-netflixWhite capitalize cursor-pointer" *ngFor="let genre of movieData?.genres">
+                                 {{ genre.name }},
+                            </span>
+                        </div>
+                        <p><strong>Rating :</strong> {{movieData.vote_average}}</p>
+                        <div class="flex flex-wrap justify-start items-center gap-1">
+                            <strong>Studio :</strong>
+                            <span class="rounded-md text-netflixGray-400 hover:text-netflixWhite capitalize cursor-pointer" *ngFor="let company of movieData?.production_companies">
+                                 {{ company.name }},
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+            <!-- for anime details -->
+           <div *ngIf="animeData" class="relative flex justify-start items-start gap-6 info-container">
+                <div class="flex flex-col justify-between items-center gap-4 w-[35%] img-container">
+                    <div class="poster-img-container">
+                        <img  class="w-40" [src]="animeData.poster_path | img" alt="">
+                    </div>
+                    <div class="w-full play-btn-container">
+                        <button (click)="toggleVideo()"
+                        class="flex justify-between items-center gap-2 border-[1px] hover:border-netflixRed bg-transparent shadow-sm px-4 py-2 rounded-md w-full text-netflixGray-300 hover:text-netflixWhite">
+                        <a class="text-md">Play</a>
+                        <i class="text-md material-icons"> play_arrow</i>
+                    </button>
+                    </div>
+                </div>
+                <div class="flex flex-col justify-start items-start gap-4 detail-container">
+                    <div class="flex flex-col justify-start items-start gap-1 title-container">
+                        <h1 class="font-bold text-2xl text-netflixRed capitalize">{{animeData.name}}</h1>
+                        <span class="text-netflixGray-400 capitalize">{{animeData. original_name}}</span>
+                        <p class="text-netflixGray-300 capitalize">{{animeData.overview}}</p>
+                    </div>
+                    <div class="flex flex-col justify-start items-start text-netflixGray-400 text-sm other-info-container">
+                        <p><strong> Aired :  </strong>  {{animeData.first_air_date}}</p>
+                        <p><strong> Total Episodes :  </strong>  {{animeData.number_of_episodes}}</p>
+                        <p><strong> Next Episodes :  </strong> {{animeData.next_episode_to_air.name}} => {{animeData.next_episode_to_air.air_date}}</p>
+                        <p><strong> Total Seasons :  </strong>  {{animeData.number_of_seasons}}</p>
+                        <p><strong>Status :</strong> {{animeData.status}}</p>
+                        <div class="flex flex-wrap justify-start items-center gap-1">
+                            <strong>Genre :</strong>
+                            <span class="rounded-md text-netflixGray-400 hover:text-netflixWhite capitalize cursor-pointer" *ngFor="let genre of animeData?.genres">
+                                 {{ genre.name }},
+                            </span>
+                        </div>
+                        <p><strong>Rating :</strong> {{animeData.vote_average}}</p>
+                        <div class="flex flex-wrap justify-start items-center gap-1">
+                            <strong>Studio :</strong>
+                            <span class="rounded-md text-netflixGray-400 hover:text-netflixWhite capitalize cursor-pointer" *ngFor="let company of animeData?.production_companies">
+                                 {{ company.name }},
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+           
+           <!-- for TvShow details -->
+           <div *ngIf="tvShowData" class="relative flex justify-start items-start gap-6 info-container">
+            <div class="flex flex-col justify-between items-center gap-4 w-[35%] img-container">
+                <div class="poster-img-container">
+                    <img  class="w-40" [src]="tvShowData.poster_path | img" alt="">
+                </div>
+                <div class="w-full play-btn-container">
+                    <button (click)="toggleVideo()"
+                    class="flex justify-between items-center gap-2 border-[1px] hover:border-netflixRed bg-transparent shadow-sm px-4 py-2 rounded-md w-full text-netflixGray-300 hover:text-netflixWhite">
+                    <a class="text-md" href="#">Play</a>
+                    <i class="text-md material-icons"> play_arrow</i>
+                </button>
+                </div>
+            </div>
+            <div class="flex flex-col justify-start items-start gap-4 detail-container">
+                <div class="flex flex-col justify-start items-start gap-1 title-container">
+                    <h1 class="font-bold text-2xl text-netflixRed capitalize">{{tvShowData.name}}</h1>
+                    <span class="text-netflixGray-400 capitalize">{{tvShowData. original_name}}</span>
+                    <p class="text-netflixGray-300 capitalize">{{tvShowData.overview}}</p>
+                </div>
+                <div class="flex flex-col justify-start items-start text-netflixGray-400 text-sm other-info-container">
+                    <p><strong> Aired :  </strong>  {{tvShowData.first_air_date}}</p>
+                    <p><strong> Total Episodes :  </strong>  {{tvShowData.number_of_episodes}}</p>
+                    <!-- <p><strong> Next Episodes :  </strong> {{tvShowData.next_episode_to_air?.name}} => {{tvShowData.next_episode_to_air?.air_date}}</p> -->
+                    <p><strong> Total Seasons :  </strong>  {{tvShowData.number_of_seasons}}</p>
+                    <p><strong>Status :</strong> {{tvShowData.status}}</p>
+                    <div class="flex flex-wrap justify-start items-center gap-1">
+                        <strong>Genre :</strong>
+                        <span class="rounded-md text-netflixGray-400 hover:text-netflixWhite capitalize cursor-pointer" *ngFor="let genre of tvShowData?.genres">
+                             {{ genre.name }},
+                        </span>
+                    </div>
+                    <p><strong>Rating :</strong> {{tvShowData.vote_average}}</p>
+                    <div class="flex flex-wrap justify-start items-center gap-1">
+                        <strong>Studio :</strong>
+                        <span class="rounded-md text-netflixGray-400 hover:text-netflixWhite capitalize cursor-pointer" *ngFor="let company of tvShowData?.production_companies">
+                             {{ company.name }},
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div> 
+             
+            <!-- for keywords all  -->
+            <div *ngIf="keywords.length > 0"  class="flex justify-start items-start w-full keyword-container">
+                <div class="flex flex-wrap justify-start items-center gap-4">
+                    <strong>Keywords :</strong>
+                    <span class="bg-netflixWhite bg-opacity-10 px-2 py-1 rounded-md text-netflixGray-400 hover:text-netflixWhite capitalize cursor-pointer" *ngFor="let keyword of keywords?.slice(0,10)">
+                        {{ keyword.name }}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    
+</section>

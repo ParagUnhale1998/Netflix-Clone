@@ -1,0 +1,115 @@
+<section id="related-container" class="flex justify-center items-center bg-netflixbackground w-full text-netflixWhite">
+    <div class="flex flex-col justify-start items-start gap-6 px-4 sm:px-0 2xl:w-[1200px] container">
+        <h1 class="mt-4 font-bold text-2xl underline underline-offset-[10px] tracking-wider">Recommendations</h1>
+        <div class="gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 grid-rows-6 sm:grid-rows-3 md:grid-rows-2 card-container">
+            <!-- Related Movies  -->
+            <ng-container *ngIf="relatedMoviesData">
+                <div class="flex justify-start items-start gap-4 mb-4 card"
+                    *ngFor="let relatedMovie of relatedMoviesData | paginate: { itemsPerPage: 6, currentPage: page }">
+                    <div (click)="navigateToMovie(relatedMovie.id)"
+                        class="flex flex-col justify-between items-center gap-4 w-[35%] cursor-pointer img-container">
+                        <div class="poster-img-container">
+                            <img class="" [src]="relatedMovie.poster_path | img" alt="">
+                        </div>
+                        <div class="w-full play-btn-container">
+                            <button
+                                class="flex justify-between items-center gap-2 border-[1px] hover:border-netflixRed bg-transparent shadow-sm px-4 py-2 rounded-md w-full text-netflixGray-300 hover:text-netflixWhite">
+                                <a class="text-sm" href="#">Play</a>
+                                <i class="text-sm material-icons"> play_arrow</i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex flex-col justify-start items-start gap-4 detail-container">
+                        <div class="flex flex-col justify-start items-start gap-1 title-container">
+                            <h1 class="font-bold text-netflixRed text-sm md:text-lg capitalize">{{relatedMovie.title}}</h1>
+                            <span class="text-netflixGray-400 text-sm capitalize">{{relatedMovie. original_title}}</span>
+                            <p class="text-netflixGray-300 text-sm capitalize">{{relatedMovie.overview.slice(0,50)}}</p>
+                        </div>
+                        <div
+                            class="flex flex-col justify-start items-start text-netflixGray-400 text-sm other-info-container">
+                            <p><strong> Aired : </strong> {{relatedMovie.release_date}}</p>
+                            <p><strong>Rating :</strong> {{relatedMovie.vote_average}}</p>
+
+                        </div>
+
+                    </div>
+                </div>
+            </ng-container>
+
+            <!-- related popular animes  -->
+            <ng-container *ngIf="relatedAnimesData">
+                <div class="flex justify-start items-start gap-4 mb-4 card"
+                    *ngFor="let relatedAnime of relatedAnimesData | paginate: { itemsPerPage: 6, currentPage: page }">
+                    <div (click)="navigateToAnime(relatedAnime.id)"
+                        class="flex flex-col justify-between items-center gap-4 w-[35%] cursor-pointer img-container">
+                        <div class="poster-img-container">
+                            <img class="" [src]="relatedAnime.poster_path | img" alt="">
+                        </div>
+                        <div class="w-full play-btn-container">
+                            <button
+                                class="flex justify-between items-center gap-2 border-[1px] hover:border-netflixRed bg-transparent shadow-sm px-4 py-2 rounded-md w-full text-netflixGray-300 hover:text-netflixWhite">
+                                <a class="text-sm" href="#">Play</a>
+                                <i class="text-sm material-icons"> play_arrow</i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex flex-col justify-start items-start gap-4 detail-container">
+                        <div class="flex flex-col justify-start items-start gap-1 title-container">
+                            <h1 class="font-bold text-lg text-netflixRed capitalize">{{relatedAnime.name}}</h1>
+                            <span class="text-netflixGray-400 capitalize">{{relatedAnime. original_name}}</span>
+                            <p class="text-netflixGray-300 capitalize">{{relatedAnime.overview.slice(0,50)}}</p>
+                        </div>
+                        <div
+                            class="flex flex-col justify-start items-start text-netflixGray-400 text-sm other-info-container">
+                            <p><strong> Aired : </strong> {{relatedAnime.first_air_date}}</p>
+                            <p><strong>Rating :</strong> {{relatedAnime.vote_average}}</p>
+
+                        </div>
+
+                    </div>
+                </div>
+            </ng-container>
+
+            <!-- related TvShows animes  -->
+            <ng-container *ngIf="relatedTvShowsData">
+                <div class="flex justify-start items-start gap-4 mb-4 card"
+                    *ngFor="let relatedTvShows of relatedTvShowsData | paginate: { itemsPerPage: 6, currentPage: page }">
+                    <div (click)="navigateToTv(relatedTvShows.id)"
+                        class="flex flex-col justify-between items-center gap-4 w-[35%] cursor-pointer img-container">
+                        <div class="poster-img-container">
+                            <img class="" [src]="relatedTvShows.poster_path | img" alt="">
+                        </div>
+                        <div class="w-full play-btn-container">
+                            <button
+                                class="flex justify-between items-center gap-2 border-[1px] hover:border-netflixRed bg-transparent shadow-sm px-4 py-2 rounded-md w-full text-netflixGray-300 hover:text-netflixWhite">
+                                <a class="text-sm" href="#">Play</a>
+                                <i class="text-sm material-icons"> play_arrow</i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex flex-col justify-start items-start gap-4 detail-container">
+                        <div class="flex flex-col justify-start items-start gap-1 title-container">
+                            <h1 class="font-bold text-lg text-netflixRed capitalize">{{relatedTvShows.name}}</h1>
+                            <span class="text-netflixGray-400 capitalize">{{relatedTvShows. original_name}}</span>
+                            <p class="text-netflixGray-300 capitalize">{{relatedTvShows.overview.slice(0,50)}}</p>
+                        </div>
+                        <div
+                            class="flex flex-col justify-start items-start text-netflixGray-400 text-sm other-info-container">
+                            <p><strong> Aired : </strong> {{relatedTvShows.first_air_date}}</p>
+                            <p><strong>Rating :</strong> {{relatedTvShows.vote_average}}</p>
+
+                        </div>
+
+                    </div>
+                </div>
+            </ng-container>
+            
+        </div>
+        <div class="flex justify-center items-center mb-6 w-full pagination-container">
+            <div
+                class="flex justify-center items-center bg-netflixGray-400 bg-opacity-30 pt-4 rounded-lg text-netflixWhite pagination-contaiener">
+                <pagination-controls (pageChange)="page = $event"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</section>

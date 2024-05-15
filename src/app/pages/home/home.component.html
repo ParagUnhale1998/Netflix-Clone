@@ -1,0 +1,17 @@
+<main id="home" class="relative bg-gradient-to-r from-black to-transparent w-screen h-screen text-netflixWhite overflow-x-hidden">
+   <app-navbar></app-navbar>
+   <app-banner></app-banner> 
+   <section id="category" class="flex flex-col justify-start sm:justify-center items-start sm:items-center gap-4 bg-netflixBlack px-4 sm:px-0 pb-10 w-screen text-netflixWhite">
+        <app-curousel class="w-1/2 sm:w-auto" [videocontent]="popularMovies" [title]="'Popular Movies'" [category]="'movie'"></app-curousel> 
+         <app-curousel [videocontent]="trendingTvShows" [title]="'Trending TvShows'"  [category]="'tv'"></app-curousel>  
+         <app-curousel [videocontent]="popularAnime" [title]="'Popular Anime'"  [category]="'anime'"></app-curousel>  
+         <app-curousel [videocontent]="topRatedMovies" [title]="'Top Rated Movies'"  [category]="'movie'"></app-curousel>  
+         <app-curousel [videocontent]="recentAnime" [title]="'Recent Released Anime'"  [category]="'anime'"></app-curousel>  
+         <app-curousel [videocontent]="topRatedTvShows" [title]="'TopRated TvShows'"  [category]="'tv'"></app-curousel> 
+         <app-curousel [videocontent]="upcomingMovies" [title]="'Upcoming Movies'"  [category]="'movie'"></app-curousel>  
+         <app-curousel [videocontent]="comedyTvShows" [title]="'Comedy TvShows'"  [category]="'tv'"></app-curousel>
+         <app-curousel [videocontent]="favouriteAnime" [title]="'Favourite Anime'"  [category]="'anime'"></app-curousel> 
+   </section>
+   <app-footer></app-footer>
+</main>
+   

@@ -1,0 +1,30 @@
+<div style="z-index: 9999;" (click)="closeSearch()"
+    class="top-0 left-0 absolute flex justify-center items-center bg-netflixBlack bg-opacity-50 w-screen h-screen">
+
+    <div class="flex justify-center items-center lg:w-[1200px] container">
+
+        <div class="bg-netflixbackground p-4 rounded-md w-[90%] md:w-1/2 search-container" (click)="$event.stopPropagation()">
+            <div class="flex justify-between items-center input-container">
+                <i class="w-auto text-3xl material-icons">search</i>
+                <input #searchInput  type="text" class="bg-transparent px-2 py-4 border-none w-[85%] outline-none" placeholder="Search.."
+                (keyup)="onKeyUp(searchInput.value)"
+                           >
+                
+                <button (click)="closeSearch()" class="hover:bg-netflixWhite px-3 p-2 rounded-full text-netflixWhite hover:text-netflixBlack"><i class="w-auto font-bold text-3xl material-icons">close</i></button>
+            </div>
+            <div *ngIf="suggestionsToggle" class="related-container">
+                <ul class="flex flex-col justify-start items-start py-2 dark:text-black" >
+                    <li (click)="navigateToPage(suggestion.id,suggestion.media_type)" class="flex justify-between items-center px-4 py-2 w-full hover:text-netflixRed hover:bg-youtube-text-secondary cursor-pointer" *ngFor="let suggestion of suggestionsData?.results?.slice(0,10)">
+                       
+                        {{ suggestion?.name || suggestion?.original_title }} ({{ suggestion?.first_air_date?.slice(0,4) || suggestion?.release_date?.slice(0,4)}})
+                    
+                        <i class="w-auto text-3xl material-icons">   smart_display</i></li>
+                       
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- <button  style="z-index: 99999;" class="top-24 right-0 absolute hover:bg-netflixWhite px-3 p-2 rounded-full text-netflixWhite hover:text-netflixBlack"><i   class="font-bold text-2xl material-icons">close</i></button> -->
+</div>

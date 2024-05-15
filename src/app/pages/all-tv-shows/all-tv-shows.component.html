@@ -1,0 +1,13 @@
+<main id="home"
+    class="relative bg-gradient-to-r from-black to-transparent w-screen h-screen text-netflixWhite overflow-x-hidden">
+    <app-navbar></app-navbar>
+    <!-- slider banner  -->
+    <app-all-tv-banner [TvShowsData]="nowPlayingTV[index]"></app-all-tv-banner>
+    <section id="category" class="flex flex-col justify-start sm:justify-center items-start sm:items-center gap-4 bg-netflixBlack px-4 sm:px-0 pb-10 w-screen text-netflixWhite">
+        <app-tv-curousel class="w-1/2 sm:w-auto" [tvContent]="trendingTV" [title]="'Trending Shows'"></app-tv-curousel> 
+        <app-tv-curousel class="w-1/2 sm:w-auto" [tvContent]="topRatedTV" [title]="'Top Rated Shows'"></app-tv-curousel> 
+        <app-tv-curousel class="w-1/2 sm:w-auto" [tvContent]="comedyTV" [title]="'Comedy Shows'"></app-tv-curousel> 
+        <app-tv-curousel class="w-1/2 sm:w-auto" [tvContent]="nowPlayingTV" [title]="'Now Playing Shows'"></app-tv-curousel> 
+   </section>
+   <app-footer></app-footer>
+</main>

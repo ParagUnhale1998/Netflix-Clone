@@ -1,0 +1,10 @@
+
+<main id="home"
+    class="relative bg-gradient-to-r from-black to-transparent w-screen h-screen text-netflixWhite overflow-x-hidden">
+    <app-navbar></app-navbar>
+
+    <app-movie-banner [movieData]="movie"  [animeData]="anime" [tvShowData]="tvshow"  [keywords]="keywords"></app-movie-banner>
+    <app-related-movies [relatedMoviesData]="relatedMovies" [relatedTvShowsData]="relatedTvshows" [relatedAnimesData]="relatedAnimes" ></app-related-movies>
+    
+    <app-footer></app-footer>
+</main>
