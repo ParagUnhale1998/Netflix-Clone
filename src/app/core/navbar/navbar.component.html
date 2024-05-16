@@ -1,0 +1,59 @@
+<header    class="top-0 left-0 z-50 fixed border-netflixGray-700 border-b-[1px] w-screen" >
+    
+    <nav  class="relative flex flex-col justify-center items-center">
+        <div class="flex justify-between items-center px-6 md:px-0 2xl:w-[1200px] text-netflixWhite container">
+            <div class="flex justify-center items-center gap-4 nav-tab-container">
+                <div class="logo-container">
+                    <a href="/">
+                        <img class="w-32" src="assets/logo.png" alt="">
+                    </a>
+                </div>
+                <div class="sm:block hidden tabs-container">
+                    <ul class="flex justify-center items-center gap-4">
+                        <li class="font-semibold text-lg hover:text-netflixRed" *ngFor="let item of navList" [ngClass]="{'text-netflixRed ': isRouteActive(item.url)}"><a [routerLink]="item.url">{{item.name}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="flex justify-center items-center gap-4 profile-container">
+                <div (click)="toggleSearch()"
+                    class="hover:bg-white px-2 py-1 rounded-full search-container hover:text-netflixBlack cursor-pointer">
+                    <i class="text-3xl material-icons">search</i>
+                </div>
+                <div
+                    class="hover:bg-white px-2 py-1 rounded-full hover:text-netflixBlack cursor-pointer notification-container">
+                    <i class="text-3xl material-icons">notifications</i>
+
+                </div>
+                <div *ngIf="!this.userData"
+                    class="hover:bg-white px-2 py-1 rounded-full hover:text-netflixBlack cursor-pointer profile-container">
+                    <i  class="text-3xl material-icons">person</i>
+                </div>
+                <div *ngIf="userData" class="relative">
+                    <!-- Profile picture -->
+                    <div (click)="toggleDropdown()" class="hover:bg-netflixWhite p-1 rounded-full cursor-pointer profile-container">
+                      <img class="rounded-full w-[40px] h-[40px]" [src]="userData?.picture" alt="">
+                    </div>
+                    
+                    <!-- Dropdown menu -->
+                    <div *ngIf="isDropdownOpen" class="right-0 z-10 absolute bg-white shadow-lg mt-2 rounded-md w-48">
+                      <!-- Dropdown items -->
+                      <div class="cursor-pointer">
+                        <a  class="block hover:bg-gray-100 px-4 py-2 hover:rounded-t-md text-gray-700 text-sm">{{userData.name}}</a>
+                        <div (click)="signOut()" class="block hover:bg-netflixRed px-4 py-2 hover:rounded-b-md text-gray-700 text-sm hover:text-netflixWhite cursor-pointer">Logout</div>
+                      </div>
+                    </div>
+                  </div>
+                  
+            </div>
+            
+        </div>
+        <div class="block sm:hidden pb-1 w-auto text-netflixWhite tabs-container">
+            <ul class="flex justify-center items-center gap-4">
+                <li class="font-semibold text-lg hover:text-netflixRed" *ngFor="let item of navList" [ngClass]="{'text-netflixRed ': isRouteActive(item.url)}"><a [routerLink]="item.url">{{item.name}}</a>
+                </li>
+            </ul>
+        </div>
+        <app-search *ngIf="isSearchOpen" (close)="toggleSearch()"></app-search>
+    </nav>
+</header>

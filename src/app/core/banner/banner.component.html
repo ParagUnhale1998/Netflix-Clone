@@ -1,0 +1,48 @@
+<section id="banner" class="relative flex justify-center items-end pb-10 w-full h-full overflow-hidden">
+    <div class="top-0 -z-50 fixed bg-netflixBlack w-screen h-screen overflow-x-hidden background-layer"></div> 
+
+    <iframe class="-top-10 sm:-top-16 -left-52 sm:left-0 -z-40 absolute w-[300vw] sm:w-screen h-screen sm:h-[120vh]" [src]="videoUrl" loop="1" allowfullscreen
+        frameborder="0">
+    </iframe>
+
+    <!-- play video home -->
+    <div *ngIf="showTrailerVideo" style="z-index: 9999;"
+    class="top-0 absolute flex justify-center items-center 2xl:w-[1200px] h-screen container">
+    <div class="relative flex justify-center items-center 2xl:w-[1200px] h-1/2 sm:h-2/3 container">
+ 
+        <iframe class="w-full sm:w-[80%] h-full" src="https://www.youtube.com/embed/b9EkMc79ZSU" frameborder="0" allow="autoplay; encrypted-media"
+            allowfullscreen></iframe>
+        </div>
+        <button (click)="closeVideo()" style="z-index: 99999;"
+            class="top-24 right-0 absolute hover:bg-netflixWhite px-3 p-2 rounded-full text-netflixWhite hover:text-netflixBlack"><i
+                class="font-bold text-2xl material-icons">close</i></button>
+    </div>
+
+
+    <div class="flex justify-start items-center 2xl:w-[1200px] container">
+
+        <div class="flex flex-col justify-start items-start gap-10 px-4 md:px-0 w-full md:w-1/2 text-netflixWhite">
+            <div class="title-img-container">
+                <!-- <img class="w-32" src="assets/banner-title.png" alt=""> -->
+                <img class="w-72 sm:w-96" src="assets/banner.png" alt="">
+            </div>
+            <div class="text-lg sm:text-xl info-contaienr">
+                <p>When a young boy vanishes, a small town uncovers a mystery involving secret experiments,
+                    terrifying supernatural forces and one strange little girl.</p>
+            </div>
+            <div class="flex justify-start items-center gap-4 font-semibold btn-container">
+                <button (click)="showTrailer()"
+                    class="flex justify-center items-center gap-1 bg-netflixWhite hover:bg-slate-200 shadow-sm px-4 py-2 rounded-lg text-netflixBlack">
+                    <i class="text-2xl sm:text-4xl material-icons"> play_arrow</i>
+                    <a class="text-md sm:text-lg">Play</a>
+                </button>
+                <button
+                    class="flex justify-center items-center gap-2 bg-netflixBlack hover:bg-neutral-900 shadow-sm shadow-white px-4 py-2 rounded-lg text-netflixWhite">
+                    <i class="text-2xl sm:text-4xl material-icons">info</i>
+                    <a class="text-md sm:text-lg" href="#">More Info</a> </button>
+
+            </div>
+        </div>
+    </div>
+
+</section>

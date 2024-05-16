@@ -1,0 +1,18 @@
+
+<div class="2xl:w-[1200px] container movies-categories-container">
+    <h2 class="my-4 w-full text-2xl sm:text-3xl tracking-wider">{{title}}</h2>
+    <div #swiperContainer class="swiper-container">
+        <div class="flex justify-start items-start gap-2 swiper-wrapper">
+            <ng-container  *ngFor="let tv of tvContent">
+             <div (click)="navigateToTvShows(tv.id)" class="relative border-1 cursor-pointer group relateive swiper-slide">
+                <img [src]="tv.poster_path | img" alt="" class="group-hover:scale-110 w-full h-auto transform transition duration-200">
+                <div  class="group-hover:flex group-hover:scale-110 bottom-0 absolute flex-col justify-end items-start gap-2 hidden bg-black bg-opacity-70 p-2 w-full h-full transition-all duration-500 ease-in info-container">
+                    <div class="font-bold text-lg h1">{{tv.original_name}}</div>
+                    <p class="text-sm">{{tv.overview.slice(0,100)}}...</p>
+                    <span class="text-sm"><strong class="text-netflixRed">Aired :</strong> {{tv.first_air_date}}</span>
+                </div>
+            </div>
+            </ng-container>
+        </div>
+    </div>
+</div>
