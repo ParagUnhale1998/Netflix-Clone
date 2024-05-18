@@ -1,0 +1,8 @@
+<div class="md:flex justify-start items-start hidden px-4 md:px-0 w-full keyword-container">
+    <div class="flex flex-wrap justify-start items-center gap-4 text-sm">
+        <strong>Keywords:</strong>
+        <span class="bg-netflixWhite bg-opacity-10 px-2 py-1 rounded-md text-netflixGray-400 hover:text-netflixWhite capitalize cursor-pointer" *ngFor="let keyword of keywords.slice(0, 5)">
+            {{ keyword.name }}
+        </span>
+    </div>
+</div>

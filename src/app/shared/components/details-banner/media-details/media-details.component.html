@@ -1,0 +1,39 @@
+<div class="relative flex sm:flex-row flex-col sm:justify-start sm:items-start gap-6 px-4 sm:px-0 info-container">
+    <div class="flex sm:flex-col justify-between items-end sm:items-center gap-4 w-1/2 sm:w-[35%] img-container">
+        <div class="poster-img-container">
+            <img class="w-40" [src]="mediaData.poster_path | img" >
+        </div>
+        <div class="w-full play-btn-container">
+            <button (click)="onToggleVideo()" class="flex justify-between items-center gap-2 border-[1px] hover:border-netflixRed bg-transparent shadow-sm px-4 py-2 rounded-md w-full text-netflixGray-300 hover:text-netflixWhite">
+                <a class="text-md">Play</a>
+                <i class="text-md material-icons">play_arrow</i>
+            </button>
+        </div>
+    </div>
+    <div class="flex flex-col justify-start items-start gap-4 detail-container">
+        <div class="flex flex-col justify-start items-start gap-1 title-container">
+            <h1 class="font-bold text-lg text-netflixRed sm:text-2xl capitalize">{{mediaData.title || mediaData.name}}</h1>
+            <span class="text-netflixGray-400 text-sm capitalize">{{mediaData.original_title || mediaData.original_name}}</span>
+            <p class="text-netflixGray-300 text-sm capitalize">{{mediaData.overview}}</p>
+        </div>
+        <div class="flex flex-col justify-start items-start text-netflixGray-400 text-sm other-info-container">
+            <p><strong>Aired:</strong> {{mediaData.release_date || mediaData.first_air_date}}</p>
+            <p *ngIf="mediaData.number_of_episodes"><strong>Total Episodes:</strong> {{mediaData.number_of_episodes}}</p>
+            <p *ngIf="mediaData.number_of_seasons"><strong>Total Seasons:</strong> {{mediaData.number_of_seasons}}</p>
+            <p><strong>Status:</strong> {{mediaData.status}}</p>
+            <div class="flex flex-wrap justify-start items-center gap-1">
+                <strong>Genre:</strong>
+                <span class="rounded-md text-netflixGray-400 hover:text-netflixWhite capitalize cursor-pointer" *ngFor="let genre of mediaData.genres">
+                    {{ genre.name }},
+                </span>
+            </div>
+            <p><strong>Rating:</strong> {{mediaData.vote_average}}</p>
+            <div class="flex flex-wrap justify-start items-center gap-1">
+                <strong>Studio:</strong>
+                <span class="rounded-md text-netflixGray-400 hover:text-netflixWhite capitalize cursor-pointer" *ngFor="let company of mediaData.production_companies">
+                    {{ company.name }},
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

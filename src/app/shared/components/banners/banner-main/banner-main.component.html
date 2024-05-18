@@ -1,0 +1,42 @@
+<section id="banner" class="relative flex justify-center items-end pb-10 w-full h-screen overflow-hidden">
+    <div class="top-0 -z-50 fixed bg-netflixbackground2 w-screen h-screen overflow-x-hidden background-layer"></div>
+
+    <img class="top-0 left-0 -z-40 absolute w-full h-full object-cover" 
+         [src]="(mediaData?.backdrop_path || mediaData?.poster_path) | originalIMG" alt="">
+
+    <div class="flex justify-start items-center 2xl:w-[1200px] container">
+        <div class="flex flex-col justify-end items-start gap-10 text-netflixWhite">
+            <div class="relative flex justify-start items-start gap-6 px-4 sm:px-0 info-container">
+                <div class="flex flex-col justify-between items-center gap-4 w-[35%] img-container">
+                    <div class="poster-img-container">
+                        <img class="w-40" [src]="mediaData?.poster_path | img" alt="">
+                    </div>
+                    <div class="w-full play-btn-container">
+                        <button (click)="navigateToDetails()"
+                                class="flex justify-between items-center gap-2 border-[1px] hover:border-netflixRed bg-transparent shadow-sm px-4 py-2 rounded-md w-full text-netflixGray-300 hover:text-netflixWhite">
+                            <a class="text-md">Details</a>
+                            <i class="text-md material-icons">info</i>
+                        </button>
+                    </div>
+                </div>
+                <div class="flex flex-col justify-start items-start gap-4 detail-container">
+                    <div class="flex flex-col justify-start items-start gap-1 title-container">
+                        <h1 class="font-bold text-lg text-netflixRed sm:text-2xl capitalize">
+                            {{ mediaData?.original_name || mediaData?.title }}
+                        </h1>
+                        <span class="text-netflixGray-400 text-sm sm:text-[18px] capitalize">
+                            {{ mediaData?.name || mediaData?.original_title }}
+                        </span>
+                        <p class="text-netflixGray-300 text-sm sm:text-[18px] capitalize">
+                            {{ mediaData?.overview }}
+                        </p>
+                    </div>
+                    <div class="flex flex-col justify-start items-start text-netflixGray-400 text-sm other-info-container">
+                        <p><strong>Aired:</strong> {{ mediaData?.first_air_date || mediaData?.release_date }}</p>
+                        <p><strong>Rating:</strong> {{ mediaData?.vote_average }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,19 @@
+<section id="related-container" class="flex justify-center items-center bg-netflixbackground w-full text-netflixWhite">
+    <div class="flex flex-col justify-start items-start gap-6 px-4 sm:px-0 2xl:w-[1200px] container">
+        <h1 *ngIf="relatedTvShowsData || relatedMoviesData || relatedAnimesData" class="mt-4 font-bold text-2xl underline underline-offset-[10px] tracking-wider">Recommendations</h1>
+        
+        <!-- Related Movies -->
+        <app-card *ngIf="relatedMoviesData" [items]="relatedMoviesData" (navigate)="navigateToMovie($event)" [page]="page"></app-card>
+
+        <!-- Related Animes -->
+        <app-card *ngIf="relatedAnimesData" [items]="relatedAnimesData" (navigate)="navigateToAnime($event)" [page]="page"></app-card>
+
+        <!-- Related TV Shows -->
+        <app-card *ngIf="relatedTvShowsData" [items]="relatedTvShowsData" (navigate)="navigateToTv($event)" [page]="page"></app-card>
+
+        <!-- Pagination -->
+        <div *ngIf="relatedTvShowsData || relatedMoviesData || relatedAnimesData"  class="flex justify-center items-center mb-6 w-full pagination-container">
+            <app-pagination (pageChange)="page = $event" ></app-pagination>
+        </div>
+    </div>
+</section>

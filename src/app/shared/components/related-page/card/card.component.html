@@ -1,0 +1,26 @@
+<div class="gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 grid-rows-6 sm:grid-rows-3 md:grid-rows-2 card-container">
+    <div class="flex justify-start items-start gap-4 mb-4 card" *ngFor="let item of items | paginate: { itemsPerPage: 6, currentPage: page }">
+        <div (click)="navigateTo(item.id)" class="flex flex-col justify-between items-center gap-4 w-[35%] cursor-pointer img-container">
+            <div class="poster-img-container">
+                <img class="" [src]="item.poster_path | img" alt="">
+            </div>
+            <div class="w-full play-btn-container">
+                <button class="flex justify-between items-center gap-2 border-[1px] hover:border-netflixRed bg-transparent shadow-sm px-4 py-2 rounded-md w-full text-netflixGray-300 hover:text-netflixWhite">
+                    <a class="text-sm" href="#">Play</a>
+                    <i class="text-sm material-icons"> play_arrow</i>
+                </button>
+            </div>
+        </div>
+        <div class="flex flex-col justify-start items-start gap-4 detail-container">
+            <div class="flex flex-col justify-start items-start gap-1 title-container">
+                <h1 class="font-bold text-netflixRed text-sm md:text-lg capitalize">{{item.title || item.name}}</h1>
+                <span class="text-netflixGray-400 text-sm capitalize">{{item.original_title || item.original_name}}</span>
+                <p class="text-netflixGray-300 text-sm capitalize">{{item.overview.slice(0,50)}}</p>
+            </div>
+            <div class="flex flex-col justify-start items-start text-netflixGray-400 text-sm other-info-container">
+                <p><strong> Aired : </strong> {{item.release_date || item.first_air_date}}</p>
+                <p><strong>Rating :</strong> {{item.vote_average}}</p>
+            </div>
+        </div>
+    </div>
+</div>

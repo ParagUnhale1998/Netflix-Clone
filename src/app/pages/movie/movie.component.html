@@ -1,0 +1,14 @@
+
+<main id="home"
+    class="relative bg-gradient-to-r from-black to-transparent w-screen text-netflixWhite overflow-x-hidden">
+    <app-navbar></app-navbar>
+    
+ <app-banner-main *ngIf="nowPlayingMovies[index]" [mediaData]="nowPlayingMovies[index]"></app-banner-main>
+    <section id="category" class="flex flex-col justify-start sm:justify-center items-start sm:items-center gap-4 bg-netflixBlack px-4 sm:px-0 pb-10 w-screen text-netflixWhite">
+        <app-curousel class="w-1/2 sm:w-auto" [videoContent]="popularMovies" [title]="'Popular Movies'" [category]="'movie'"></app-curousel> 
+        <app-curousel class="w-1/2 sm:w-auto" [videoContent]="topRatedMovies" [title]="'Top Rated Movies'" [category]="'movie'"></app-curousel> 
+        <app-curousel class="w-1/2 sm:w-auto" [videoContent]="upcomingMovies" [title]="'Upcoming Movies'" [category]="'movie'"></app-curousel> 
+        <app-curousel class="w-1/2 sm:w-auto" [videoContent]="nowPlayingMovies" [title]="'Now Playing Movies'" [category]="'movie'"></app-curousel> 
+   </section>
+   <app-footer></app-footer>
+</main>

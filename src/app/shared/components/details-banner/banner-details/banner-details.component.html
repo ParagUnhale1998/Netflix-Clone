@@ -1,0 +1,27 @@
+<section id="banner" class="relative flex justify-center items-end pb-10 w-full h-screen overflow-hidden">
+    <div class="top-0 -z-50 fixed bg-netflixbackground2 w-screen h-screen overflow-x-hidden background-layer"></div>
+
+    <!-- for bg banner -->
+    <img *ngIf="movieData" class="top-0 left-0 -z-40 absolute w-full h-full object-cover"
+        [src]="movieData.backdrop_path | originalIMG" alt="">
+    <img *ngIf="animeData" class="top-0 left-0 -z-40 absolute w-full h-full object-cover"
+        [src]="animeData.backdrop_path | originalIMG" alt="">
+    <img *ngIf="tvShowData" class="top-0 left-0 -z-40 absolute w-full h-full object-cover"
+        [src]="tvShowData.backdrop_path | originalIMG" alt="">
+
+    <div class="flex justify-start items-end 2xl:w-[1200px] h-auto container">
+        <div class="flex flex-col justify-end items-end sm:items-start gap-10 text-netflixWhite">
+            <app-videos [showVideo]="showVideo" (closeVideoEvent)="closeVideo()"></app-videos>
+
+            <app-media-details *ngIf="movieData" [mediaData]="movieData"
+                (toggleVideo)="toggleVideo()"></app-media-details>
+            <app-media-details *ngIf="animeData" [mediaData]="animeData"
+                (toggleVideo)="toggleVideo()"></app-media-details>
+            <app-media-details *ngIf="tvShowData" [mediaData]="tvShowData"
+                (toggleVideo)="toggleVideo()"></app-media-details>
+
+            <app-keywords-details *ngIf="keywords.length > 0" [keywords]="keywords"></app-keywords-details>
+
+        </div>
+    </div>
+</section>

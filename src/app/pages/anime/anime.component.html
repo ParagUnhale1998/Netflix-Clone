@@ -1,0 +1,99 @@
+
+<app-navbar></app-navbar>
+<section id="anime" class="bg-netflixbackground pb-10 w-screen">
+    <div class="relative flex justify-center items-center">
+        <div class="relative flex justify-between items-center mt-32 sm:mt-20 px-2 sm:px-0 2xl:w-[1200px] text-netflixWhite container">
+            <div class="relative flex lg:flex-row flex-col justify-center lg:justify-start items-center lg:items-start gap-2 w-full main-container">
+
+                <!-- banner container main -->
+                <div class="relative w-full lg:w-[80%] banner-container" *ngIf="recentlyRelesedAnimes">
+                    <!-- slider-container -->
+                    <div class="relative cursor-pointer slider-container">
+                        <div class="relative w-full image-container"
+                        *ngIf="recentlyRelesedAnimes && recentlyRelesedAnimes[index]"
+                        (click)="navigateToAnime(recentlyRelesedAnimes[index].id)">
+                        <img class="w-full h-[300px] lg:h-[550px] object-cover"
+                            [src]="(recentlyRelesedAnimes[index].backdrop_path || recentlyRelesedAnimes[index].poster_path) | originalIMG"
+                            alt="">
+                        <h1
+                            class="bottom-0 left-0 absolute bg-netflixRed bg-opacity-70 py-2 w-full font-bold text-center text-netflixWhite text-xl capitalize">
+                            {{recentlyRelesedAnimes[index].name}}
+                        </h1>
+                    </div>
+
+                    </div>
+                    <!-- related-container -->
+                    <div class="relative recent-relesed-contaienr"  *ngIf="recentlyRelesedAnimes">
+                        <div class="flex flex-col justify-center items-start container">
+                            <h1 class="border-netflixWhite my-4 px-4 sm:px-0 text-2xl text-netflixRed">Recent Released</h1>
+                            <div class="gap-2 grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 grid-rows-3 sm:grid-rows-4 lg:grid-rows-2 w-full card-container">
+                                <div class="relative w-full cursor-pointer card group"
+                                    (click)="navigateToAnime(anime.id)"
+                                    *ngFor="let anime of recentlyRelesedAnimes.slice(0,18)">
+                                    <img class="brightness-80 w-full h-full object-cover"
+                                        [src]="anime.poster_path | img" alt="">
+                                    <div
+                                        class="group-hover:block bottom-0 absolute hidden bg-netflixbackground bg-opacity-80 px-1 py-2 w-full text-center transition-all duration-300 ease-in-out info-container">
+                                        <h1 class="w-full font-semibold text-sm">{{anime.name}}</h1>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-center items-center gap-4 mt-4 container">
+                                <button
+                                    class="bg-netflixRed hover:bg-netflixWhite px-6 py-2 rounded-lg font-bold text-netflixWhite hover:text-netflixRed"
+                                    (click)="fetchNextPage(currentPage - 1)"
+                                    [disabled]="currentPage === 1">Prev</button>
+                                <button
+                                    class="bg-netflixRed hover:bg-netflixWhite px-6 py-2 rounded-lg font-bold text-netflixWhite hover:text-netflixRed"
+                                    (click)="fetchNextPage(currentPage + 1)">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- sidebar contaienr -->
+                <div  *ngIf="popularAnimes" class="bg-netflixbackground2 rounded-md w-full lg:w-[20%] popular-sidebar-contaienr">
+                    <div class="p-1 pb-4 container">
+                        <h1 class="my-4 px-4 sm:px-0 text-netflixRed text-xl">Weekly Popular Anime</h1>
+                        <div class="flex flex-col justify-start items-start gap-4 card-container"
+                        *ngIf="popularAnimes && popularAnimes[0]">
+                            <div class="relative w-full cursor-pointer main-card"
+                            
+                                (click)="navigateToAnime(popularAnimes[0].id)">
+                                <img class="w-full h-[200px] lg:h-[150px] object-cover"
+                                    [src]="popularAnimes[0].backdrop_path | originalIMG" alt="">
+                                <div
+                                    class="bottom-0 absolute flex justify-start items-center gap-4 bg-black bg-opacity-70 py-2 pl-4 w-full info-container">
+                                    <span
+                                        class="bg-white px-[15px] py-[10px] rounded-md font-bold text-netflixBlack">1</span>
+                                    <h3 class="">{{popularAnimes[0].name}}</h3>
+                                </div>
+                            </div>
+                            <ng-container *ngIf="popularAnimes && popularAnimes[0]">
+                            <div class="relative flex justify-start items-center gap-4 pl-4 w-full card"
+                                *ngFor="let anime of popularAnimes?.slice(1,10); let i = index">
+                                <div class="w-[10%] md:w-[20%] number">
+                                    <span
+                                        class="border-[1px] border-netflixWhite px-[15px] py-[10px] rounded-md font-bold text-netflixWhite">{{i
+                                        + 2}}</span>
+                                </div>
+                                <div class="relative w-[10%] md:w-[20%] img object-cover">
+                                    <img class="object-fill" [src]="(anime.poster_path || anime.backdrop_path) | img"
+                                        alt="">
+                                </div>
+
+                                <div class="w-[40%] cursor-pointer info" (click)="navigateToAnime(anime.id)">
+                                    <h1 class="w-full text-netflixGray-400 text-sm hover:text-netflixWhite">
+                                        {{anime.name.slice(0,30)}}</h1>
+                                </div>
+                            </div>
+                        </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</section>
+<app-footer></app-footer>>

@@ -1,0 +1,15 @@
+<div *ngIf="showVideo" (click)="closeVideo()" style="z-index: 9999;"
+    class="top-0 absolute flex justify-center items-center 2xl:w-[1200px] h-screen container">
+   <div class="relative flex justify-center items-center 2xl:w-[1200px] h-1/2 sm:h-2/3 container">
+
+   
+    <iframe *ngIf="!videoError" class="w-full sm:w-[80%] h-full" [src]="trailerUrl" frameborder="0" allow="autoplay; encrypted-media"
+        allowfullscreen></iframe>
+
+    <img class="w-full" *ngIf="videoError" [src]="backDropImg | originalIMG" alt="">
+</div>
+    <button (click)="closeVideo()" style="z-index: 99999;"
+        class="top-24 right-0 absolute hover:bg-netflixWhite px-3 p-2 rounded-full text-netflixWhite hover:text-netflixBlack"><i
+            class="font-bold text-2xl material-icons">close</i></button>
+      
+</div>
