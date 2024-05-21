@@ -1,27 +1,109 @@
-# NetflixClone
+# Netflix-Like Website
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.3.
+## Introduction
+Hello, everyone! My name is Parag Unhale. Recently, I created this amazing Netflix-like website using Angular and Tailwind CSS, utilizing the IMDb API. This README will guide you through the features, setup, and usage of the project.
 
-## Development server
+## Features
+- **Home Page**: 
+  - Netflix logo, language button, and sign-in button.
+  - Awesome heading banner text with a beautiful Netflix background.
+  - "Get Started" button for logging in as a guest.
+  - Google Gmail login authentication.
+  - Beautiful loading spinner on login.
+  - Video banner with heading text for movies, series, and Stranger Things.
+  - Information about movies, play button, and more info button.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Navigation Bar**:
+  - Fixed navbar with Netflix logo.
+  - Tabs for Home, TV, Movies, and Anime.
+  - Search bar icon, notification icon, and user profile picture with a dropdown showing the username and logout button.
+  - Background color change on scroll using a custom scroll directive.
 
-## Code scaffolding
+- **Content Sections**:
+  - Popular movies, trending shows, popular anime, top-rated movies, recent releases, top-rated TV shows, upcoming movies, comedy TV shows, favorite anime, and many more.
+  - TV page with a slideshow banner changing every 5 seconds, featuring TV show posters, names, and other information.
+  - Movies page with a slideshow banner, popular movies, top-rated movies, and now playing movies.
+  - Anime page with a top anime slider, popular weekly anime, top ten anime, and recent releases with pagination.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Details Page**:
+  - Anime details page with a poster, play button, title, original title, description, arrival date, total seasons, status, genre, rating, duration, and keywords.
+  - Video modal for anime trailers.
+  - Recommendations section with pagination.
 
-## Build
+- **Search Functionality**:
+  - Search modal with debouncing to delay API calls and suggest top 10 results.
+  - Navigation to the details page of the selected search result.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **Responsiveness**:
+  - Fully responsive design for all devices.
 
-## Running unit tests
+- **Authentication and Guards**:
+  - Auth guard for protected routes.
+  - Interceptor for setting authorization bearer tokens in API calls.
+  - Session storage for user details.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- **Performance Enhancements**:
+  - Data caching service for reducing unnecessary API calls.
+  - Custom image pipe for showing images using IDs.
+  - Custom scroll directive for navbar background color change.
+  - Best practices followed for clean code API calls.
 
-## Running end-to-end tests
+## Project Structure
+- **src**: Main source folder.
+  - **environments**: Environment configuration.
+  - **assets**: Static assets.
+  - **app**: Main app folder.
+    - **core**: Core functionalities.
+      - **constants**: Constant values.
+      - **guards**: Route guards.
+      - **interceptors**: HTTP interceptors.
+      - **models**: Data models.
+      - **services**: Core services.
+    - **pages**: Application pages.
+      - **anime**: Anime page components.
+      - **details**: Details page components.
+      - **home**: Home page components.
+      - **login-home**: Login home page components.
+      - **movies**: Movies page components.
+      - **tv**: TV page components.
+    - **shared**: Shared modules.
+      - **components**: Shared components.
+      - **directives**: Custom directives.
+      - **pipes**: Custom pipes.
+      - **services**: Shared services.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Installation
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-username/netflix-like-website.git
+   cd netflix-like-website
 
-## Further help
+2.Install dependencies:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+npm install
+Set up environment variables:
+
+Create environment configuration files in the src/environments folder for development and production settings.
+Start the development server:
+
+ng serve
+Open your browser and navigate to http://localhost:4200/.
+
+Usage
+Use the sign-in button for Google Gmail login authentication.
+Explore the various sections like popular movies, trending shows, and more.
+Use the search functionality to find specific movies, TV shows, or anime.
+Enjoy the responsive design across different devices.
+Log out using the dropdown in the user profile picture.
+Contributing
+Contributions are welcome! Please fork the repository and create a pull request with your changes. Ensure that your code follows the project's coding standards.
+
+License
+This project is licensed under the MIT License.
+
+Acknowledgments
+IMDb API for providing movie, TV show, and anime data.
+Angular and Tailwind CSS for the amazing development framework and styling.
+
+I hope you like this website. Keep supporting my development journey, and thank you!
