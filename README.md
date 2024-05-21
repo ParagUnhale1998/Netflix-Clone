@@ -108,5 +108,5 @@ Angular and Tailwind CSS for the amazing development framework and styling.
 
 I hope you like this website. Keep supporting my development journey, and thank you!
 
-![Image Description](assets/netflix.jpg)
+![Image Description](https://github.com/ParagUnhale1998/Netflix-Clone/blob/main/src/assets/netflix.jpg)
 
