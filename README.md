@@ -107,3 +107,6 @@ IMDb API for providing movie, TV show, and anime data.
 Angular and Tailwind CSS for the amazing development framework and styling.
 
 I hope you like this website. Keep supporting my development journey, and thank you!
+
+![Image Description](assets/netflix.jpg)
+
